@@ -39,3 +39,6 @@ hit_attempts integer,
 kills integer,
 player_id integer references player(player_id)
 );
+
+alter table game
+add column opponent text;

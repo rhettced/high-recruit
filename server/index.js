@@ -30,5 +30,6 @@ app.post('/api/login',authCtrl.login);
 app.get('/api/session',authCtrl.getSession)
 // endpoints for games
 app.post('/api/addgame',gameCtrl.addGame);
+app.get('/api/getplayersgames/:id',gameCtrl.getSinglePlayerGame);
 
 app.listen(SERVER_PORT,console.log(`Bringing the wings to server ${SERVER_PORT}`));

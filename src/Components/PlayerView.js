@@ -13,8 +13,13 @@ class PlayerView extends Component{
             blocks: null,
             hitAttempts: null,
             kills: null,
+            opponent:'',
             games:[]
         }
+    }
+
+    componentDidMount(){
+        this.addGame();
     }
 
     addGameDisplay = () => {
@@ -25,10 +30,19 @@ class PlayerView extends Component{
         this.setState({[event.target.name]: event.target.value})
     }
 
-    addGame = () => {
-        const {aces,digs,blocks,hitAttempts,kills} = this.state;
+    getGames = () =>{
         const playerId = this.props.playerReducer.player.player_id;
-        Axios.post('/api/addgame',{aces,digs,blocks,hitAttempts,kills,playerId})
+        Axios.get(`/api/getplayersgames/${playerId}`)
+        .then(res => {
+            this.setState({games: res.data})
+        })
+        .catch(err => console.log(err))
+    }
+
+    addGame = () => {
+        const {aces,digs,blocks,hitAttempts,kills,opponent} = this.state;
+        const playerId = this.props.playerReducer.player.player_id;
+        Axios.post('/api/addgame',{aces,digs,blocks,hitAttempts,kills,playerId,opponent})
         .then(res =>{
             //console.log(res.data);
             this.setState({games: res.data, 
@@ -37,13 +51,24 @@ class PlayerView extends Component{
                            blocks: null, 
                            hitAttempts: null, 
                            kills: null,
+                           opponent:'',
                            addGameToggle: 0});
         })
         .catch(err => console.log(err))
     }
 
     render(){
-        console.log(this.state.games);
+        const mappedGames = this.state.games.map((el,ind) => {
+            return <div key={ind}>
+                <p>Opponent:{el.opponent}</p>
+                <p>Aces:{el.aces}</p>
+                <p>Digs:{el.digs}</p>
+                <p>Blocks:{el.blocks}</p>
+                <p>Kills:{el.kills}</p>
+                <p>Attempts:{el.hit_attempts}</p>
+            </div>
+        })
+        //console.log(this.state.games);
         return(
             <div className='playerview-app'>
                 <div className='playerview-total'>
@@ -64,9 +89,10 @@ class PlayerView extends Component{
                         <input type="number" placeholder='Blocks' name='blocks' onChange={this.handleInput}/>
                         <input type="number" placeholder='Hit Attempts' name='hitAttempts' onChange={this.handleInput}/>
                         <input type="number" placeholder='Kills' name='kills' onChange={this.handleInput}/>
+                        <input type="text" placeholder='Opponent' name='opponent' onChange={this.handleInput}/>
                         <button onClick={this.addGame}> Add Game </button>
                     </div>}
-                    
+                    {mappedGames}
                 </div>
             </div>
         );
