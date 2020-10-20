@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { connect } from 'react-redux';
 
 class RecruiterView extends Component{
     render(){
@@ -10,4 +11,6 @@ class RecruiterView extends Component{
     }
 }
 
-export default RecruiterView;
+const mapMyStateToProps = reduxState => reduxState;
+
+export default connect(mapMyStateToProps)(RecruiterView);

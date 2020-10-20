@@ -7,10 +7,10 @@ const initialState = {
 const GET_USER = 'GET_USER',
       CLEAR_USER = 'CLEAR_USER';
 
-export function getUser(userObj){
+export function getUser(playerObj){
     return {
         type: GET_USER,
-        payload: userObj
+        payload: playerObj
     }
 }
 
@@ -27,9 +27,9 @@ export default function reducer(state = initialState,action){
 
     switch(type){
         case GET_USER:
-            return {...state, user: payload};
+            return {...state, player: payload};
         case CLEAR_USER:
-            return {...state, user: payload};
+            return {...state, player: payload};
         default:
             return state;
     }

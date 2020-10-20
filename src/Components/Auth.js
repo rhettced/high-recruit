@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
 import './Auth.css';
 import Axios from 'axios';
+import { connect } from 'react-redux';
+import {getUser} from '../Redux/player_reducer';
+import {getRecruiter} from '../Redux/recruiter_reducer';
 
 class Auth extends Component{
     constructor(){
@@ -34,12 +37,14 @@ class Auth extends Component{
         if(boxChecked===false){
             Axios.post('/api/register',{name, email, password, school, classYear, position, picUrl, phoneNumber, boxChecked})
             .then(res => {
-                
+                //console.log(res.data)
+                this.props.getUser(res.data);
                 this.props.history.push('/profile');
             })
         } else {
             Axios.post('/api/register',{name, email, password, school, phoneNumber, boxChecked})
             .then(res => {
+                this.props.getRecruiter(res.data);
                 this.props.history.push('/recruitview');
             })
         }
@@ -49,13 +54,14 @@ class Auth extends Component{
         const {email, password,boxChecked} = this.state;
         Axios.post('/api/login',{email,password,boxChecked})
         .then(res => {
-           
+            if(boxChecked===false){
+                this.props.getUser(res.data);
+                this.props.history.push('/profile');
+            } else {
+                this.props.getRecruiter(res.data);
+                this.props.history.push('/recruitview');
+            }
         })
-        if(boxChecked===false){
-            this.props.history.push('/profile');
-        } else {
-            this.props.history.push('/recruitview');
-        }
 
     }
 
@@ -100,4 +106,6 @@ class Auth extends Component{
     }
 }
 
-export default Auth;
+const mapMyStateToProps = reduxState => reduxState;
+
+export default connect(mapMyStateToProps,{getUser, getRecruiter})(Auth);

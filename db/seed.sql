@@ -29,3 +29,13 @@ insert into recruiter
 (name,email,password,phone_number,school)
 values
 ('Tommy', 'tommy@gmail.com','test','1234567890','UCLA');
+
+create table game(
+game_id serial primary key,
+aces integer,
+digs integer,
+blocks integer,
+hit_attempts integer,
+kills integer,
+player_id integer references player(player_id)
+);
