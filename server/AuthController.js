@@ -4,7 +4,7 @@ module.exports = {
     register: async(req,res) => {
         const {email,password,name,school,position,classYear,picUrl,phoneNumber, boxChecked} = req.body;
         db = req.app.get('db');
-        console.log(req.body);
+        //console.log(req.body);
         if (boxChecked === false){
 
             const foundUser = await db.check_user_player({email});
@@ -41,7 +41,7 @@ module.exports = {
     login: async(req,res) => {
         const {password, email,boxChecked} = req.body,
         db = req.app.get('db');
-        console.log(req.body);
+        //console.log(req.body);
         
         if (boxChecked === false){
             const foundUser = await db.check_user_player({email});
@@ -80,5 +80,12 @@ module.exports = {
     logout: async(req,res) => {
         await req.session.destroy();
         res.sendStatus(200);
-    } 
+    },
+    getSession: (req,res) => {
+        if(req.session.user){
+            res.status(200).send(req.session.user);
+        } else{
+            res.sendStatus(200);
+        }
+    }
 }

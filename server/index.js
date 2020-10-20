@@ -6,7 +6,7 @@ const express = require('express'),
       {CONNECTION_STRING,SERVER_PORT,SESSION_SECRET} = process.env;
 
       const authCtrl = require('./AuthController');
-
+      const gameCtrl = require('./GameController');
 app.use(express.json());
 
 app.use(session({
@@ -24,8 +24,11 @@ massive({
     console.log('Party on Sports Fans')
 })
 
-//endpoints
+//endpoints for authentication
 app.post('/api/register',authCtrl.register);
 app.post('/api/login',authCtrl.login);
+app.get('/api/session',authCtrl.getSession)
+// endpoints for games
+app.post('/api/addgame',gameCtrl.addGame);
 
 app.listen(SERVER_PORT,console.log(`Bringing the wings to server ${SERVER_PORT}`));

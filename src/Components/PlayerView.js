@@ -1,3 +1,4 @@
+import Axios from 'axios';
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import './PlayerView.css';
@@ -11,7 +12,8 @@ class PlayerView extends Component{
             digs: null,
             blocks: null,
             hitAttempts: null,
-            kills: null
+            kills: null,
+            games:[]
         }
     }
 
@@ -23,8 +25,25 @@ class PlayerView extends Component{
         this.setState({[event.target.name]: event.target.value})
     }
 
+    addGame = () => {
+        const {aces,digs,blocks,hitAttempts,kills} = this.state;
+        const playerId = this.props.playerReducer.player.player_id;
+        Axios.post('/api/addgame',{aces,digs,blocks,hitAttempts,kills,playerId})
+        .then(res =>{
+            //console.log(res.data);
+            this.setState({games: res.data, 
+                           aces: null, 
+                           digs: null, 
+                           blocks: null, 
+                           hitAttempts: null, 
+                           kills: null,
+                           addGameToggle: 0});
+        })
+        .catch(err => console.log(err))
+    }
+
     render(){
-        console.log(this.state);
+        console.log(this.state.games);
         return(
             <div className='playerview-app'>
                 <div className='playerview-total'>
@@ -45,6 +64,7 @@ class PlayerView extends Component{
                         <input type="number" placeholder='Blocks' name='blocks' onChange={this.handleInput}/>
                         <input type="number" placeholder='Hit Attempts' name='hitAttempts' onChange={this.handleInput}/>
                         <input type="number" placeholder='Kills' name='kills' onChange={this.handleInput}/>
+                        <button onClick={this.addGame}> Add Game </button>
                     </div>}
                     
                 </div>
