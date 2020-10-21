@@ -1,1 +1,1 @@
-select * from game where player_id = ${playerId};
+select * from game where player_id = ${player_id};

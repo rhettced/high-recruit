@@ -14,50 +14,67 @@ class PlayerView extends Component{
             hitAttempts: null,
             kills: null,
             opponent:'',
-            games:[]
+            games:[],
+            playerStats: []
         }
     }
 
-    componentDidMount(){
-        this.addGame();
-    }
-
+    
     addGameDisplay = () => {
         this.setState({addGameToggle: 1})
     }
-
+    
     handleInput = (event) => {
         this.setState({[event.target.name]: event.target.value})
     }
-
+    
     getGames = () =>{
-        const playerId = this.props.playerReducer.player.player_id;
-        Axios.get(`/api/getplayersgames/${playerId}`)
+        Axios.get(`/api/getplayersgames`)
         .then(res => {
             this.setState({games: res.data})
         })
         .catch(err => console.log(err))
     }
-
+    
     addGame = () => {
         const {aces,digs,blocks,hitAttempts,kills,opponent} = this.state;
         const playerId = this.props.playerReducer.player.player_id;
-        Axios.post('/api/addgame',{aces,digs,blocks,hitAttempts,kills,playerId,opponent})
-        .then(res =>{
-            //console.log(res.data);
-            this.setState({games: res.data, 
-                           aces: null, 
-                           digs: null, 
-                           blocks: null, 
-                           hitAttempts: null, 
-                           kills: null,
-                           opponent:'',
-                           addGameToggle: 0});
-        })
-        .catch(err => console.log(err))
-    }
+        if(aces === null || digs === null || hitAttempts === null || kills === null){
+            return console.log('Please fill empty spaces')
+        } else {
+            Axios.post('/api/addgame',{aces,digs,blocks,hitAttempts,kills,playerId,opponent})
+            .then(res =>{
+                //console.log(res.data);
+                this.setState({games: res.data, 
+                    aces: null, 
+                    digs: null, 
+                    blocks: null, 
+                    hitAttempts: null, 
+                    kills: null,
+                    opponent:'',
+                    addGameToggle: 0});
+                })
+                .catch(err => console.log(err))
+            }
+        }
+        
+        getStats = () => {
+            Axios.get(`/api/playerstats`)
+            .then(res => {
+                this.setState({playerStats: res.data[0]})
+            })
+            .catch(err => console.log(err))
+        }
+        
+        componentDidMount(){
+            this.getGames();
+            this.getStats();
+            //console.log(this.props.playerReducer)
+        }
 
-    render(){
+        render(){
+        //console.log(this.state.games);
+        //console.log(this.state.playerStats);
         const mappedGames = this.state.games.map((el,ind) => {
             return <div key={ind}>
                 <p>Opponent:{el.opponent}</p>
@@ -92,6 +109,18 @@ class PlayerView extends Component{
                         <input type="text" placeholder='Opponent' name='opponent' onChange={this.handleInput}/>
                         <button onClick={this.addGame}> Add Game </button>
                     </div>}
+                    <div className='stat-box'>
+                        <div>Avg Stats per Game</div>
+                        <div className='top-line'>
+                            <p>Aces: {Math.round(this.state.playerStats.avg_aces*100)/100}</p>
+                            <p>Digs: {Math.round(this.state.playerStats.avg_digs*100)/100}</p>
+                            <p>Blocks: {Math.round(this.state.playerStats.avg_blocks*100)/100}</p>
+                        </div>
+                        <div className='bottom-line'>
+                             <p>Kills: {Math.round(this.state.playerStats.avg_kills*100)/100}</p>
+                             <p>Kill%: {Math.round((this.state.playerStats.total_kills/this.state.playerStats.total_hit_attempts)*100)/100}</p>
+                        </div>
+                    </div>
                     {mappedGames}
                 </div>
             </div>

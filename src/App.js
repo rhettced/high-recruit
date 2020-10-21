@@ -17,7 +17,7 @@ class App extends Component {
   componentDidMount(){
     Axios.get('/api/session')
     .then(res => {
-      console.log(res.data);
+      //console.log(res.data);
       if(res.data.player_id) {
         this.props.getUser(res.data)
       } else{

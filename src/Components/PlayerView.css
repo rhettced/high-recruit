@@ -41,3 +41,21 @@
 .toggle-button{
     margin-top: 10px;
 }
+
+.top-line{
+    display: flex;
+}
+.top-line p{
+    margin-left: 4px;
+}
+.bottom-line{
+    display: flex;
+    justify-content: center;
+}
+.bottom-line p{
+    margin-left: 4px;
+}
+
+.stat-box{
+    margin-top: 10px;
+}
