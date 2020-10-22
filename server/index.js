@@ -29,11 +29,13 @@ massive({
 //endpoints for authentication
 app.post('/api/register',authCtrl.register);
 app.post('/api/login',authCtrl.login);
+app.post(`/api/logout`,authCtrl.logout);
 app.get('/api/session',authCtrl.getSession)
 // endpoints for games
 app.post('/api/addgame',gameCtrl.addGame);
 app.get('/api/getplayersgames',gameCtrl.getSinglePlayerGame);
 app.get('/api/playerstats',gameCtrl.getAvgStats);
 app.get(`/api/displayplayers`,recCtrl.displayPlayers);
+app.get(`/api/single/:playerId`,recCtrl.singlePlayer);
 
 app.listen(SERVER_PORT,console.log(`Bringing the wings to server ${SERVER_PORT}`));

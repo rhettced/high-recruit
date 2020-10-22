@@ -14,7 +14,7 @@ export function getRecruiter(recruiterObj){
     }
 }
 
-export function clearUser(){
+export function clearRecruiter(){
     return {
         type: CLEAR_RECRUITER,
         payload: {}
