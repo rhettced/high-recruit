@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import './SinglePlayerDisplay.css';
+import {Link} from 'react-router-dom';
 
 class SinglePlayerDisplay extends Component {
 
     render() {
         return (
+            <Link to={`/player/${this.props.player_id}`}>
             <div className='single-player-frame'>
                 <div>
                     <img src={this.props.picture} />
@@ -22,6 +24,7 @@ class SinglePlayerDisplay extends Component {
                     </div>
                 </div>
             </div>
+            </Link>
         );
     }
 }

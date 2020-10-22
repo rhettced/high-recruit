@@ -9,6 +9,7 @@ export default(
     <Switch>
         <Route component={Auth} exact path='/'/>
         <Route component={PlayerView} path='/profile'/>
+        <Route component={SinglePlayer} path='/player/:player_id'/>
         <Route component={RecruiterView} exact path='/recruitview'/>
     </Switch>
 );

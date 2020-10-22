@@ -35,7 +35,8 @@ class RecruiterView extends Component{
                                         blocks={player.avg_blocks}
                                         picture={player.profile_pic}
                                         kills={player.total_kills}
-                                        hitAttempts={player.total_hit_attempts}/>
+                                        hitAttempts={player.total_hit_attempts}
+                                        player_id={player.player_id}/>
         });
         return(
             <div className='recruiter-app'>
