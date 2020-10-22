@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import Axios from 'axios';
 import {clearUser} from '../Redux/player_reducer';
 import {clearRecruiter} from '../Redux/recruiter_reducer';
+import {Link} from 'react-router-dom';
 
 class Header extends Component{
 
@@ -24,11 +25,17 @@ class Header extends Component{
                         <h2 className='header-logo'>HR</h2>
                         <h1>HighRecruits</h1>
                     </div>
-                    <button onClick={this.logoutUser}> Logout </button>
+                    {this.props.playerReducer.player.name? <div>
+                                    <Link to='editaccount'><button>Edit Account</button></Link>
+                                    <button onClick={this.logoutUser}> Logout </button>
+                                </div> : <button onClick={this.logoutUser}> Logout </button>}
+                    
                 </div>
             </header>
         );
     }
 }
 
-export default connect(null,{clearUser,clearRecruiter})(Header);
+const mapMyStateToProps = reduxState => reduxState;
+
+export default connect(mapMyStateToProps,{clearUser,clearRecruiter})(Header);
