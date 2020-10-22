@@ -40,7 +40,7 @@ class PlayerView extends Component{
         const {aces,digs,blocks,hitAttempts,kills,opponent} = this.state;
         const playerId = this.props.playerReducer.player.player_id;
         if(aces === null || digs === null || hitAttempts === null || kills === null){
-            return console.log('Please fill empty spaces')
+            return alert('Please fill empty spaces')
         } else {
             Axios.post('/api/addgame',{aces,digs,blocks,hitAttempts,kills,playerId,opponent})
             .then(res =>{

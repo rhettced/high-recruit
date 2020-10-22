@@ -1,0 +1,21 @@
+/* variables for colors */
+@import '../App.scss';
+$img_height: 100px;
+
+.recruit-warning{
+    font-size: 10px;
+    color: $warning_color;
+}
+
+.register-inputs input{
+    margin: 5px;
+}
+
+.register-inputs{
+    position: relative;
+    bottom: 100px;
+}
+
+.logoo{
+    height: $img_height;
+}

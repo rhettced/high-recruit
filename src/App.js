@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
+import './App.scss';
 import { render } from '@testing-library/react';
 import Header from './Components/Header';
 import Auth from './Components/Auth';
