@@ -1,7 +1,15 @@
 //site color variables
 $warning_color: rgb(255, 0, 0);
-$primary_1: rgb(128, 120, 120);
+$primary_1: black;
 $primary_2: rgba(224, 65, 65, 0.692);
+$primary_3: tan;
+$change_px: 550px;
+
+@mixin flex-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 .App {
   /* display: flex;
@@ -10,8 +18,5 @@ $primary_2: rgba(224, 65, 65, 0.692);
   margin: 0px ;
 }
 
-.auth-app{
-  margin-top: 100px;
-}
 
 

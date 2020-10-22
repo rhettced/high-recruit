@@ -1,3 +1,5 @@
+@import '../App.scss';
+
 .profile-pic{
     height: 100px;
     margin-top: 10px;
@@ -5,8 +7,8 @@
 }
 
 .playerview-app{
-    display: flex;
-    justify-content: center;
+    @include flex-container;
+    background-color: $primary_3;
 }
 
 .playerview-total{
@@ -14,20 +16,24 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    //border: black solid 2px;
+    
 }
 
 .profile-container{
     width: 320px;
-    border: solid black;
+    border: solid $primary_1;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+   
 }
 
 .profile-container p{
     margin-top: 0px;
     padding-top: 0px;
+    color: $primary_1;
 }
 
 .add-game-container{
@@ -58,4 +64,23 @@
 
 .stat-box{
     margin-top: 10px;
+}
+
+.stat-title{
+    font-weight: bold;
+}
+
+@media (min-width: $change_px){
+    .stat-numbers{
+        display: flex;
+    }
+    .games-list{
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        width: 700px;
+    }
+    .single-game{
+        width: 300px;
+    }
 }

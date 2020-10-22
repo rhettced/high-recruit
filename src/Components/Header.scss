@@ -21,4 +21,19 @@ $width: 100vw;
     margin-left: 0px;
     position: relative;
     right: 20px;
+    color: $primary_3;;
+}
+
+.HR-header button{
+    margin-right: 10px;
+}
+
+.header-leftside{
+    @include flex-container;
+}
+
+@media (min-width: $change_px){
+    .HR-header{
+        justify-content: space-between;
+    }
 }

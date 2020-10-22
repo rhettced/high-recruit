@@ -20,10 +20,10 @@ class Header extends Component{
         return(
             <header className='header-app'>
                 <div className='HR-header'>
-                    {/* <img src='https://st2.depositphotos.com/5943796/11381/v/950/depositphotos_113815596-stock-illustration-initial-letter-hr-red-swoosh.jpg'
-                    className='header-logo' alt='logo'/> */}
-                    <h2 className='header-logo'>HR</h2>
-                    <h1>HighRecruits</h1>
+                    <div className='header-leftside'>
+                        <h2 className='header-logo'>HR</h2>
+                        <h1>HighRecruits</h1>
+                    </div>
                     <button onClick={this.logoutUser}> Logout </button>
                 </div>
             </header>

@@ -72,18 +72,19 @@ class Auth extends Component {
                 <div>
                     {this.state.toggle === 0 ?
 
-                        <div>
-                            <img src='https://st2.depositphotos.com/5943796/11381/v/950/depositphotos_113815596-stock-illustration-initial-letter-hr-red-swoosh.jpg'
-                                className='logoo' alt='logo'/>
-                            <div>
+                        <div className='auth-default'>
+                            <h2 className='auth-logo'>HR</h2>
+                            <div className='login-inputs'>
                                 <input placeholder='Email *' name='email' onChange={this.handleInput} />
                                 <input placeholder='Password *' type='password' name='password' onChange={this.handleInput} />
                             </div>
                             <div>
                                 <button onClick={this.loginUser}>Log in</button>
                                 <button onClick={this.toggleRegister}>Register</button>
-                                <p>Recruiter</p>
-                                <input type='checkbox' checked={this.state.boxChecked} onChange={this.toggleRecruiter} />
+                                <div className='if-recruiter'>
+                                    <p>Recruiter:</p>
+                                    <input type='checkbox' checked={this.state.boxChecked} onChange={this.toggleRecruiter} />
+                                </div>
                             </div>
                         </div> :
                         <div className='register-inputs'>

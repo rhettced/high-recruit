@@ -1,6 +1,33 @@
 /* variables for colors */
 @import '../App.scss';
 $img_height: 100px;
+$margin: 10px;
+
+.auth-app{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    //border: solid black 2px;
+    margin-bottom: 0px;
+    height: 100vh;
+    background-color: $primary_3;;
+}
+
+.auth-logo{
+    position: relative;
+    top: 100px;
+    color: $primary_2;
+    font-size: 130px;
+}
+
+.login-inputs{
+    margin-bottom: $margin;
+    display: flex;
+    flex-direction: column;
+}
+.login-inputs input{
+    margin: $margin;
+}
 
 .recruit-warning{
     font-size: 10px;
@@ -11,11 +38,18 @@ $img_height: 100px;
     margin: 5px;
 }
 
-.register-inputs{
-    position: relative;
-    bottom: 100px;
+
+.if-recruiter{
+    @include flex-container;
 }
 
-.logoo{
-    height: $img_height;
+.auth-default{
+    position: relative;
+    bottom: 200px;
+}
+
+@media (min-width: 550px){
+    .login-inputs{
+        flex-direction: row;
+    }
 }
