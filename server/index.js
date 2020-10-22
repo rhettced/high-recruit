@@ -7,6 +7,8 @@ const express = require('express'),
 
       const authCtrl = require('./AuthController');
       const gameCtrl = require('./GameController');
+      const recCtrl = require('./RecruiterController');
+
 app.use(express.json());
 
 app.use(session({
@@ -31,6 +33,7 @@ app.get('/api/session',authCtrl.getSession)
 // endpoints for games
 app.post('/api/addgame',gameCtrl.addGame);
 app.get('/api/getplayersgames',gameCtrl.getSinglePlayerGame);
-app.get('/api/playerstats',gameCtrl.getAvgStats)
+app.get('/api/playerstats',gameCtrl.getAvgStats);
+app.get(`/api/displayplayers`,recCtrl.displayPlayers);
 
 app.listen(SERVER_PORT,console.log(`Bringing the wings to server ${SERVER_PORT}`));

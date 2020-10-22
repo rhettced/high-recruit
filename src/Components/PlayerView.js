@@ -91,7 +91,7 @@ class PlayerView extends Component{
                 <div className='playerview-total'>
                     <div className='profile-container'>
                         <img src={`${this.props.playerReducer.player.profile_pic}`} 
-                        className='profile-pic'/>
+                        className='profile-pic' alt='player'/>
                         <h3>{this.props.playerReducer.player.name}</h3>
                         <p>School: {this.props.playerReducer.player.school}</p>
                         <p>Class: {this.props.playerReducer.player.class_year}</p>

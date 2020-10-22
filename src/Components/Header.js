@@ -7,7 +7,7 @@ class Header extends Component{
             <header className='header-app'>
                 <div className='HR-header'>
                     <img src='https://st2.depositphotos.com/5943796/11381/v/950/depositphotos_113815596-stock-illustration-initial-letter-hr-red-swoosh.jpg'
-                    className='header-logo'/>
+                    className='header-logo' alt='logo'/>
                     <h1>HighRecruits</h1>
                     <button> Logout </button>
                 </div>
