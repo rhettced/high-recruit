@@ -1,0 +1,45 @@
+@import '../App.scss';
+
+.Link{
+    text-decoration: none;
+}
+
+.single-player-frame{
+    display: flex;
+    border: $primary_1 solid 2px;
+    margin: 20px;
+    width: 430px;
+}
+
+.single-player-frame p{
+    margin-left: 5px;
+    color: black;
+}
+.single-player-frame h4{
+    margin-left: 5px;
+    color: black;
+}
+
+.single-player-frame img{
+    margin: 20px;
+    height: 120px;
+}
+.upper{
+    display: flex;
+    position: relative;
+    bottom: 15px;
+}
+.lower{
+    display: flex;
+    justify-content: center;
+    position: relative;
+    bottom: 30px;
+}
+
+@media (min-width: 900px){
+    .single-player-frame{
+        display: flex;
+        justify-content: center;
+    }
+ 
+ }

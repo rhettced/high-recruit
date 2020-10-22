@@ -1,0 +1,28 @@
+@import '../App.scss';
+
+.players-display{
+    width: 450px;
+}
+.recruiter-app{
+    display: flex;
+    justify-content: center;
+}
+
+@media (min-width: 900px){
+   .recruiter-app{
+       width: 1300px;
+       display: flex;
+       justify-content: center;
+   }
+   .players-display{
+       width: 1100px;
+       //border: solid greenyellow 2px;
+       display: flex;
+       flex-wrap: wrap;
+       justify-content: center;
+   }
+
+}
+
+
+

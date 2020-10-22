@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import Axios from 'axios';
 import SinglePlayerDisplay from './SinglePlayerDisplay';
-import './RecruiterView.css';
+import './RecruiterView.scss';
 
 class RecruiterView extends Component{
     constructor(){
