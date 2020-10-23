@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import './App.scss';
-import { render } from '@testing-library/react';
+// import { render } from '@testing-library/react';
 import Header from './Components/Header';
-import Auth from './Components/Auth';
-import PlayerView from './Components/PlayerView';
-import RecruiterView from './Components/RecruiterView';
-import SinglePLayer from './Components/SinglePlayer';
+// import Auth from './Components/Auth';
+// import PlayerView from './Components/PlayerView';
+// import RecruiterView from './Components/RecruiterView';
+// import SinglePLayer from './Components/SinglePlayer';
 import routes from './routes';
 import Axios from 'axios';
 import {connect} from 'react-redux'

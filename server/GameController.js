@@ -11,7 +11,7 @@ module.exports = {
     getSinglePlayerGame: (req,res) =>{
         const {player_id} = req.session.user;
         db = req.app.get('db');
-        console.log(req.session.user);
+        //console.log(req.session.user);
 
         db.get_single_player_games({player_id})
         .then(games => res.status(200).send(games))

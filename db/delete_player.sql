@@ -1,0 +1,1 @@
+delete from player where player_id = ${player_id};

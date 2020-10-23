@@ -26,7 +26,7 @@ class Header extends Component{
                         <h1>HighRecruits</h1>
                     </div>
                     {this.props.playerReducer.player.name? <div>
-                                    <Link to='editaccount'><button>Edit Account</button></Link>
+                                    <Link to={`/editaccount/${this.props.playerReducer.player.player_id}`}><button>Edit Account</button></Link>
                                     <button onClick={this.logoutUser}> Logout </button>
                                 </div> : <button onClick={this.logoutUser}> Logout </button>}
                     

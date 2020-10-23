@@ -1,4 +1,5 @@
 @import '../App.scss';
+$view_width: 100vw;
 
 .players-display{
     width: 450px;
@@ -7,11 +8,20 @@
     height: 3000px;
     display: flex;
     justify-content: center;
+    background-color: $primary_3;
+    width: $view_width;
+}
+
+.recruiter-app h1{
+    position: relative;
+    left: 10px;
+    color: $primary_2;
+    font-size: 60px;
 }
 
 @media (min-width: 900px){
    .recruiter-app{
-       width: 1300px;
+       width: $view_width;
        display: flex;
        justify-content: center;
        align-items: flex-start;

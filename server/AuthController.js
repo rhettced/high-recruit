@@ -88,5 +88,25 @@ module.exports = {
         } else{
             res.sendStatus(200);
         }
+    },
+    deleteAccount: async (req,res) =>{
+        console.log('hit delete account')
+        const {player_id,recruiter_id} = req.params;
+        const db = req.app.get('db');
+        console.log('req.params', req.params);
+
+        if(player_id){
+            await db.delete_player({player_id})
+            .then(() =>{
+                res.sendStatus(200);
+            })
+            .catch(err => console.log(err))
+        } else{
+            await db.delete_recruiter({recruiter_id})
+            .then(() =>{
+                res.sendStatus(200);
+            })
+            .catch(err => console.log(err))
+        }
     }
 }

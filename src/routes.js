@@ -12,7 +12,7 @@ export default(
         <Route component={PlayerView} path='/profile'/>
         <Route component={SinglePlayer} path='/player/:player_id'/>
         <Route component={RecruiterView} exact path='/recruitview'/>
-        <Route component={EditPlayer} path='/editaccount'/>
+        <Route component={EditPlayer} path='/editaccount/:player_id'/>
         
     </Switch>
 );

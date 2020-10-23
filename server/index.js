@@ -31,7 +31,8 @@ massive({
 app.post('/api/register',authCtrl.register);
 app.post('/api/login',authCtrl.login);
 app.post(`/api/logout`,authCtrl.logout);
-app.get('/api/session',authCtrl.getSession)
+app.get('/api/session',authCtrl.getSession);
+app.delete('/api/deleteaccount/:player_id/:recruiter_id',authCtrl.deleteAccount);
 // endpoints for games
 app.post('/api/addgame',gameCtrl.addGame);
 app.get('/api/getplayersgames',gameCtrl.getSinglePlayerGame);
