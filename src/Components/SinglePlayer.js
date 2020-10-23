@@ -1,6 +1,7 @@
 import Axios from 'axios';
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
+import './SinglePlayer.scss';
 
 class SinglePlayer extends Component{
     constructor(){
@@ -41,10 +42,10 @@ class SinglePlayer extends Component{
     render(){
         console.log(this.state.player)
         return(
-            <div>
+            <div className='single-player-app-container'>
                 <div className='single-player-container'>
                         <img src={`${this.state.player.profile_pic}`} 
-                        className='profile-pic' alt='player'/>
+                        className='single-profile-pic' alt='player'/>
                         <h3>{this.state.player.name}</h3>
                         <p>School: {this.state.player.school}</p>
                         <p>Class: {this.state.player.class_year}</p>

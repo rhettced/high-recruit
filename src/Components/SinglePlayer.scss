@@ -1,0 +1,19 @@
+@import '../App.scss';
+
+.single-player-app-container{
+    display: flex;
+    justify-content: center;
+    background-color: $primary_3;
+    height: 100vh;
+}
+.single-profile-pic{
+    height: 120px;
+    margin-top: 10px;
+}
+
+.single-player-container{
+    margin-top: 10px;
+    border: solid $primary_1;
+    width: 330px;
+    height: 400px;
+}
