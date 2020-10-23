@@ -8,6 +8,7 @@ const express = require('express'),
       const authCtrl = require('./AuthController');
       const gameCtrl = require('./GameController');
       const recCtrl = require('./RecruiterController');
+      const emailCtrl = require('./EmailController');
 
 app.use(express.json());
 
@@ -37,5 +38,7 @@ app.get('/api/getplayersgames',gameCtrl.getSinglePlayerGame);
 app.get('/api/playerstats',gameCtrl.getAvgStats);
 app.get(`/api/displayplayers`,recCtrl.displayPlayers);
 app.get(`/api/single/:playerId`,recCtrl.singlePlayer);
+//endpoint for email nodemailer
+app.post(`/api/email`,emailCtrl.email);
 
 app.listen(SERVER_PORT,console.log(`Bringing the wings to server ${SERVER_PORT}`));
