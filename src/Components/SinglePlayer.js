@@ -1,5 +1,6 @@
 import Axios from 'axios';
 import React, {Component} from 'react';
+import { connect } from 'react-redux';
 
 class SinglePlayer extends Component{
     constructor(){
@@ -18,6 +19,21 @@ class SinglePlayer extends Component{
         })
     }
 
+    sendContact = () => {
+        const player_email = this.state.player.email;
+        const player_name = this.state.player.name;
+        const rec_name = this.props.recruiterReducer.recruiter.name
+        const phone_number = this.props.recruiterReducer.recruiter.phone_number;
+        const rec_email = this.props.recruiterReducer.recruiter.email;
+        const {school} = this.props.recruiterReducer.recruiter;
+        
+        Axios.post(`/api/email`,{player_email,player_name,rec_name,phone_number,rec_email,school})
+        .then((res)=>{
+            res.status(200).send(alert('email has sent'));
+        })
+        alert(`email has sent`)
+    }
+
     componentDidMount(){
         this.getPlayer();
     }
@@ -34,11 +50,14 @@ class SinglePlayer extends Component{
                         <p>Class: {this.state.player.class_year}</p>
                         <p>Position: {this.state.player.position}</p>
                         <p>Email: {this.state.player.email}</p>
-                        <p>Phone: {this.state.player.phone_number}</p> 
+                        <p>Phone: {this.state.player.phone_number}</p>
+                        <button onClick={this.sendContact}>Send Contact Info</button> 
                     </div>
             </div>
         );
     }
 }
 
-export default SinglePlayer;
+const mapMyStateToProps = reduxState => reduxState;
+
+export default connect(mapMyStateToProps)(SinglePlayer);

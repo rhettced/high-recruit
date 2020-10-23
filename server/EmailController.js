@@ -3,7 +3,7 @@ const {EMAIL,PASSWORD} = process.env;
 
 module.exports = {
     email: async(req, res) => {
-        const {rec_name, rec_email, phone_number, school, player_email} = req.body;
+        const {rec_name, rec_email, phone_number, school, player_email, player_name} = req.body;
         // try/catch is used to handle errors without the use of .then and .catch
         try {
             //The transporter is essentially the email that you are using to send
@@ -44,8 +44,11 @@ module.exports = {
                 //structure it, and inline styling to style it. IF you are using an
                 //image, you should pass the src that is provided below, and then
                 //give the actual image a value in the attachments array below.
-                html: `<div>This is NodeMailer Test</div>
-                       <img src="cid:unique@nodemailer.com"/>`,
+                html: `<div>${player_name}</div>
+                       <div>My name is ${rec_name}, I am a recruter for ${school}, I saw your HighRecruiter profile and would be intrested in talking to you more and seeing you play sometime.</div>
+                       <div>Here is my contact info, hope to hear from you soon.</div>
+                       <div>${rec_email}</div>
+                       <div>${phone_number}</div>`,
                 //attachments include files attached to the email, as well as sources
                 //for your images.
                 // attachments: [

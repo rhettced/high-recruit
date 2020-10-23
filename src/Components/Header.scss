@@ -35,5 +35,6 @@ $width: 100vw;
 @media (min-width: $change_px){
     .HR-header{
         justify-content: space-between;
+        width: $width
     }
 }
