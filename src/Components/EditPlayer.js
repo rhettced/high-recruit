@@ -45,7 +45,7 @@ class EditPlayer extends Component{
 
     deleteButton = () =>{
         const player_id = this.state.playerInfo.player_id;
-        const recruiter_id = 1000;
+        const recruiter_id = 1000
         Axios.delete(`/api/deleteaccount/${player_id}/${recruiter_id}`)
         this.props.history.push('/')
     }
