@@ -4,6 +4,7 @@ const express = require('express'),
       session = require('express-session'),
       app = express(),
       {CONNECTION_STRING,SERVER_PORT,SESSION_SECRET} = process.env;
+      const path = require('path');
 
       const authCtrl = require('./AuthController');
       const gameCtrl = require('./GameController');
@@ -33,6 +34,7 @@ app.post('/api/login',authCtrl.login);
 app.post(`/api/logout`,authCtrl.logout);
 app.get('/api/session',authCtrl.getSession);
 app.delete('/api/deleteaccount/:player_id/:recruiter_id',authCtrl.deleteAccount);
+app.put(`/api/editinfo/:player_id`,authCtrl.editPlayer);
 // endpoints for games
 app.post('/api/addgame',gameCtrl.addGame);
 app.get('/api/getplayersgames',gameCtrl.getSinglePlayerGame);
@@ -41,5 +43,11 @@ app.get(`/api/displayplayers`,recCtrl.displayPlayers);
 app.get(`/api/single/:playerId`,recCtrl.singlePlayer);
 //endpoint for email nodemailer
 app.post(`/api/email`,emailCtrl.email);
+//endpoint for hosting
+app.use(express.static(__dirname + '/../build'));
+
+app.get('*',(req,res) =>{
+    res.sendFile(path.join(__dirname,'../build/index.html'));
+})
 
 app.listen(SERVER_PORT,console.log(`Bringing the wings to server ${SERVER_PORT}`));

@@ -93,7 +93,7 @@ module.exports = {
         console.log('hit delete account')
         const {player_id,recruiter_id} = req.params;
         const db = req.app.get('db');
-        console.log('req.params', req.params);
+        //console.log('req.params', req.params);
 
         if(player_id){
             await db.delete_player({player_id})
@@ -108,5 +108,16 @@ module.exports = {
             })
             .catch(err => console.log(err))
         }
+    },
+    editPlayer: async(req,res) => {
+        const {name,email,position,school,classYear,phoneNumber,picUrl} = req.body;
+        const {player_id} = req.params;
+        const db = req.app.get('db');
+
+        await db.update_info({name,email,position,school,classYear,phoneNumber,picUrl,player_id})
+        .then(player => {
+            res.status(200).send(player);
+        })
+        .catch(err => console.log(err))
     }
 }

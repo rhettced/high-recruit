@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Axios from 'axios';
+import { getUser } from '../Redux/player_reducer';
 
 
 import './RecruiterView.scss';
@@ -49,6 +50,22 @@ class EditPlayer extends Component {
         this.props.history.push('/')
     }
 
+    editPlayer = () =>{
+        const {name,email,school,classYear,position,picUrl,phoneNumber} = this.state;
+        const player_id = this.state.playerInfo.player_id;
+        if(!name || !email || !school || !classYear || !position || !picUrl || !phoneNumber){
+            alert('please fill in all fields');
+        } else {
+            Axios.put(`/api/editinfo/${player_id}`,{name,email,school,classYear,position,picUrl,phoneNumber})
+            .then(res=>{
+                console.log(res.data);
+                this.props.getUser(res.data);
+                this.props.history.push('/profile');
+            })
+            .catch(err => console.log(err));
+        }
+    }
+
     render() {
         console.log(this.state);
         return (
@@ -64,7 +81,7 @@ class EditPlayer extends Component {
                         <p>Phone: {this.props.playerReducer.player.phone_number}</p>
                     </div>
                 <div className='register-inputs'>
-                    <p className='recruit-warning'>Recruiter fill out * only</p>
+                    <p className='recruit-warning'>Fill Out All Fields</p>
                     <input placeholder='Name *' name='name' onChange={this.handleInput} value={this.state.name} />
                     <input placeholder='Email *' name='email' onChange={this.handleInput} />
                     <input placeholder='School *' name='school' onChange={this.handleInput} />
@@ -73,7 +90,7 @@ class EditPlayer extends Component {
                     <input placeholder='Profile Pic Url' name='picUrl' onChange={this.handleInput} />
                     <input placeholder='Phone Number *' type="tel" name='phoneNumber' onChange={this.handleInput} />
                     <div>
-                        <button>Save Changes</button>
+                        <button onClick={this.editPlayer}>Save Changes</button>
                         <button onClick={this.deleteButton}>Delete Account</button>
                         <button onClick={this.cancelButton}>Cancel</button>
                     </div>
@@ -85,4 +102,4 @@ class EditPlayer extends Component {
 
 const mapMyStateToProps = reduxState => reduxState;
 
-export default connect(mapMyStateToProps)(EditPlayer);
+export default connect(mapMyStateToProps,{getUser})(EditPlayer);

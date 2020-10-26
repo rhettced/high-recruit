@@ -40,7 +40,6 @@ class RecruiterView extends Component{
         });
         return(
             <div className='recruiter-app'>
-                <h1>Players:</h1>
                 <div className='players-display'>
                     {mappedPlayers}
                 </div>
