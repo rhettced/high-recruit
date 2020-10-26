@@ -9,7 +9,7 @@ class SinglePlayerDisplay extends Component {
             <Link to={`/player/${this.props.player_id}`} className='Link'>
             <div className='single-player-frame'>
                 <div>
-                    <img src={this.props.picture} />
+                    <img src={this.props.picture} alt='player'/>
                 </div>
                 <div>
                     <h4>{this.props.name}</h4>

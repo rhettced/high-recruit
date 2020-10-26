@@ -83,6 +83,7 @@ module.exports = {
         res.sendStatus(200);
     },
     getSession: (req,res) => {
+        console.log(req.session.user);
         if(req.session.user){
             res.status(200).send(req.session.user);
         } else{
@@ -113,7 +114,7 @@ module.exports = {
         const {name,email,position,school,classYear,phoneNumber,picUrl} = req.body;
         const {player_id} = req.params;
         const db = req.app.get('db');
-
+        console.log(req.params);
         await db.update_info({name,email,position,school,classYear,phoneNumber,picUrl,player_id})
         .then(player => {
             res.status(200).send(player);

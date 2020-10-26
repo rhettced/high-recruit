@@ -69,6 +69,10 @@ class PlayerView extends Component {
     }
 
     componentDidMount() {
+        console.log(this.props.playerReducer);
+        // if(!this.props.playerReducer.player.name){
+        //     this.props.history.push('/');
+        // }
         this.getGames();
         this.getStats();
         //console.log(this.props.playerReducer)

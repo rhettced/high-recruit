@@ -27,6 +27,7 @@ class EditPlayer extends Component {
         Axios.get(`/api/single/${playerId}`)
             .then(res => {
                 //console.log(res.data);
+                //this.props.getUser(res.data[0]);
                 this.setState({ playerInfo: res.data[0] })
             })
     }
@@ -68,7 +69,8 @@ class EditPlayer extends Component {
     }
 
     render() {
-        console.log(this.state);
+        //console.log(this.state);
+        console.log(this.props);
         return (
             <div className='edit-player-app'>
                 <div className='profile-container'>

@@ -48,6 +48,10 @@ $margin: 10px;
     bottom: 200px;
 }
 
+.auth-default button{
+    margin: 0px 5px;
+}
+
 @media (min-width: 550px){
     .login-inputs{
         flex-direction: row;

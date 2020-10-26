@@ -33,9 +33,14 @@ class SinglePlayer extends Component{
             res.status(200).send(alert('email has sent'));
         })
         alert(`email has sent`)
+        this.props.history.push('/recruitview')
     }
 
     componentDidMount(){
+        // if(!this.props.recruiterReducer.recruiter.name){
+        //     this.props.history.push('/');
+        // } else{
+        // }
         this.getPlayer();
     }
 

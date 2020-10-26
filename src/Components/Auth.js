@@ -4,6 +4,7 @@ import Axios from 'axios';
 import { connect } from 'react-redux';
 import { getUser } from '../Redux/player_reducer';
 import { getRecruiter } from '../Redux/recruiter_reducer';
+import { withRouter } from 'react-router-dom';
 
 class Auth extends Component {
     constructor() {
@@ -62,6 +63,7 @@ class Auth extends Component {
                     this.props.history.push('/recruitview');
                 }
             })
+            .catch(err => alert('Wrong Username or Password'))
 
     }
 
@@ -111,4 +113,4 @@ class Auth extends Component {
 
 const mapMyStateToProps = reduxState => reduxState;
 
-export default connect(mapMyStateToProps, { getUser, getRecruiter })(Auth);
+export default connect(mapMyStateToProps, { getUser, getRecruiter })(withRouter(Auth));
