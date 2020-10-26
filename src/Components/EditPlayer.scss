@@ -1,0 +1,17 @@
+@import '../App.scss';
+
+.edit-player-app{
+    @include flex-container;
+    flex-direction: column;
+    justify-content: flex-start;
+    background-color: $primary_3;
+    height: 100vh;
+}
+
+.profile-container{
+    @include flex-container;
+}
+
+.edit-player-app button{
+    margin: 5px;
+}

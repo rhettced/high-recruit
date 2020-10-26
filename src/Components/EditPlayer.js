@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Axios from 'axios';
 import { getUser } from '../Redux/player_reducer';
+import './EditPlayer.scss';
 
 
 import './RecruiterView.scss';
@@ -50,19 +51,19 @@ class EditPlayer extends Component {
         this.props.history.push('/')
     }
 
-    editPlayer = () =>{
-        const {name,email,school,classYear,position,picUrl,phoneNumber} = this.state;
+    editPlayer = () => {
+        const { name, email, school, classYear, position, picUrl, phoneNumber } = this.state;
         const player_id = this.state.playerInfo.player_id;
-        if(!name || !email || !school || !classYear || !position || !picUrl || !phoneNumber){
+        if (!name || !email || !school || !classYear || !position || !picUrl || !phoneNumber) {
             alert('please fill in all fields');
         } else {
-            Axios.put(`/api/editinfo/${player_id}`,{name,email,school,classYear,position,picUrl,phoneNumber})
-            .then(res=>{
-                console.log(res.data);
-                this.props.getUser(res.data);
-                this.props.history.push('/profile');
-            })
-            .catch(err => console.log(err));
+            Axios.put(`/api/editinfo/${player_id}`, { name, email, school, classYear, position, picUrl, phoneNumber })
+                .then(res => {
+                    console.log(res.data);
+                    this.props.getUser(res.data);
+                    this.props.history.push('/profile');
+                })
+                .catch(err => console.log(err));
         }
     }
 
@@ -71,15 +72,15 @@ class EditPlayer extends Component {
         return (
             <div className='edit-player-app'>
                 <div className='profile-container'>
-                        <img src={`${this.props.playerReducer.player.profile_pic}`}
-                            className='profile-pic' alt='player' />
-                        <h3>{this.props.playerReducer.player.name}</h3>
-                        <p>School: {this.props.playerReducer.player.school}</p>
-                        <p>Class: {this.props.playerReducer.player.class_year}</p>
-                        <p>Position: {this.props.playerReducer.player.position}</p>
-                        <p>Email: {this.props.playerReducer.player.email}</p>
-                        <p>Phone: {this.props.playerReducer.player.phone_number}</p>
-                    </div>
+                    <img src={`${this.props.playerReducer.player.profile_pic}`}
+                        className='profile-pic' alt='player' />
+                    <h3>{this.props.playerReducer.player.name}</h3>
+                    <p>School: {this.props.playerReducer.player.school}</p>
+                    <p>Class: {this.props.playerReducer.player.class_year}</p>
+                    <p>Position: {this.props.playerReducer.player.position}</p>
+                    <p>Email: {this.props.playerReducer.player.email}</p>
+                    <p>Phone: {this.props.playerReducer.player.phone_number}</p>
+                </div>
                 <div className='register-inputs'>
                     <p className='recruit-warning'>Fill Out All Fields</p>
                     <input placeholder='Name *' name='name' onChange={this.handleInput} value={this.state.name} />
@@ -102,4 +103,4 @@ class EditPlayer extends Component {
 
 const mapMyStateToProps = reduxState => reduxState;
 
-export default connect(mapMyStateToProps,{getUser})(EditPlayer);
+export default connect(mapMyStateToProps, { getUser })(EditPlayer);
