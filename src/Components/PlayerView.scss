@@ -9,6 +9,7 @@
 .playerview-app{
     @include flex-container;
     background-color: $primary_3;
+    width: 100vw;
 }
 
 .playerview-total{
@@ -72,6 +73,9 @@
 }
 
 @media (min-width: $change_px){
+    .playerview-app{
+        width:100vw;
+    }
     .stat-numbers{
         display: flex;
     }

@@ -1,9 +1,11 @@
 const nodemailer = require('nodemailer');
-const {EMAIL,PASSWORD} = process.env;
+const twilio = require('twilio');
+
+const { EMAIL, PASSWORD } = process.env;
 
 module.exports = {
-    email: async(req, res) => {
-        const {rec_name, rec_email, phone_number, school, player_email, player_name} = req.body;
+    email: async (req, res) => {
+        const { rec_name, rec_email, phone_number, school, player_email, player_name } = req.body;
         // try/catch is used to handle errors without the use of .then and .catch
         try {
             //The transporter is essentially the email that you are using to send
@@ -62,14 +64,29 @@ module.exports = {
                 //     }
                 // ]
             }, (err, res) => {
-                if(err){
+                if (err) {
                     console.log(err)
                 } else {
                     res.status(200).send(info);
                 }
             })
-        } catch(err){
+        } catch (err) {
             res.status(500).send(err);
         }
-    } 
+    },
+    text: (req, res) => {
+        const accountSid = 'AC3b5c5fdc870ae280795c95ce2521513b'; // Your Account SID from www.twilio.com/console
+        const authToken = '21d51c7a0229fc54f6446778c2cc47e6';   // Your Auth Token from www.twilio.com/console
+
+        const client = new twilio(accountSid, authToken);
+        console.log('hit');
+        client.messages.create({
+            body: 'Hello from Node',
+            to: '+16235187521',  // Text this number
+            from: '+13343676024' // From a valid Twilio number
+        })
+            .then((message) => console.log(message.sid))
+            .catch(err => console.log(err))
+    }
+
 }

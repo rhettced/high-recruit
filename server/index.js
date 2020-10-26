@@ -44,6 +44,7 @@ app.get(`/api/displayplayers`,recCtrl.displayPlayers);
 app.get(`/api/single/:playerId`,recCtrl.singlePlayer);
 //endpoint for email nodemailer
 app.post(`/api/email`,emailCtrl.email);
+app.post(`/api/text`,emailCtrl.text);
 //endpoint for hosting
 
 app.get('*',(req,res) =>{

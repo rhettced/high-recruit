@@ -8,7 +8,8 @@
     display: flex;
     border: $primary_1 solid 2px;
     margin: 20px;
-    width: 430px;
+    width: 400px;
+    background-color: $primary_3;
 }
 
 .single-player-frame p{
@@ -40,6 +41,7 @@
     .single-player-frame{
         display: flex;
         justify-content: center;
+        width: 470px;
     }
  
  }

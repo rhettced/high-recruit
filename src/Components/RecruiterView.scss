@@ -2,14 +2,15 @@
 $view_width: 100vw;
 
 .players-display{
-    width: 450px;
+    width: 100vw;
+    background-color: $primary_3;
 }
 .recruiter-app{
     height: 3000px;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     background-color: $primary_3;
-    width: 470px;
+    width: 490px;
 }
 
 .recruiter-app h1{

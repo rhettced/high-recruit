@@ -25,6 +25,7 @@
     "react-scripts": "3.4.3",
     "redux": "^4.0.5",
     "redux-promise-middleware": "^6.1.2",
+    "twilio": "^3.50.0",
     "yarn": "^1.22.10"
   },
   "scripts": {
