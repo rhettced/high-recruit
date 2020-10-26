@@ -10,8 +10,9 @@ const express = require('express'),
       const gameCtrl = require('./GameController');
       const recCtrl = require('./RecruiterController');
       const emailCtrl = require('./EmailController');
-
-app.use(express.json());
+      
+      app.use(express.json());
+      app.use(express.static(__dirname + '/../build'));
 
 app.use(session({
     resave: false,
@@ -44,7 +45,6 @@ app.get(`/api/single/:playerId`,recCtrl.singlePlayer);
 //endpoint for email nodemailer
 app.post(`/api/email`,emailCtrl.email);
 //endpoint for hosting
-app.use(express.static(__dirname + '/../build'));
 
 app.get('*',(req,res) =>{
     res.sendFile(path.join(__dirname,'../build/index.html'));
