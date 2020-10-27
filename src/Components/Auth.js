@@ -35,6 +35,9 @@ class Auth extends Component {
 
     registerUser = () => {
         const { name, email, password, school, classYear, position, picUrl, phoneNumber, boxChecked } = this.state;
+        if(phoneNumber.length !== 10){
+            return alert('please enter valid 10 digit phone number no () or -')
+        }
         if (boxChecked === false) {
             Axios.post('/api/register', { name, email, password, school, classYear, position, picUrl, phoneNumber, boxChecked })
                 .then(res => {
@@ -98,7 +101,7 @@ class Auth extends Component {
                             <input placeholder='Class Year' name='classYear' onChange={this.handleInput} />
                             <input placeholder='Position' name='position' onChange={this.handleInput} />
                             <input placeholder='Profile Pic Url' name='picUrl' onChange={this.handleInput} />
-                            <input placeholder='Phone Number *' type="tel" name='phoneNumber' onChange={this.handleInput} />
+                            <input placeholder='Phone # 1234567890 *' type="tel" name='phoneNumber' onChange={this.handleInput} />
                             <div>
                                 <button onClick={this.registerUser}>Register</button>
                             </div>

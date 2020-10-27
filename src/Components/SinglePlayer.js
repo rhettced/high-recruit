@@ -36,6 +36,22 @@ class SinglePlayer extends Component{
         this.props.history.push('/recruitview')
     }
 
+    textContact = () =>{
+        const player_name = this.state.player.name;
+        const rec_name = this.props.recruiterReducer.recruiter.name
+        const phone_number = this.props.recruiterReducer.recruiter.phone_number;
+        const rec_email = this.props.recruiterReducer.recruiter.email;
+        const {school} = this.props.recruiterReducer.recruiter;
+        const player_phone = this.state.player.phone_number;
+        
+        Axios.post(`/api/text`,{player_phone,player_name,rec_name,phone_number,rec_email,school})
+        .then((res)=>{
+            res.status(200).send(alert('email has sent'));
+        })
+        alert(`text has sent`)
+        this.props.history.push('/recruitview')
+    }
+
     componentDidMount(){
         // if(!this.props.recruiterReducer.recruiter.name){
         //     this.props.history.push('/');
@@ -57,7 +73,8 @@ class SinglePlayer extends Component{
                         <p>Position: {this.state.player.position}</p>
                         <p>Email: {this.state.player.email}</p>
                         <p>Phone: {this.state.player.phone_number}</p>
-                        <button onClick={this.sendContact}>Send Contact Info</button> 
+                        <button onClick={this.sendContact}>Email Contact Info</button> 
+                        <button onClick={this.textContact}>Text Contact Info</button> 
                     </div>
             </div>
         );

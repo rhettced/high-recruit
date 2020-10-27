@@ -75,14 +75,16 @@ module.exports = {
         }
     },
     text: (req, res) => {
+        const { rec_name, rec_email, phone_number, school, player_name,player_phone } = req.body;
         //const accountSid = 'AC3b5c5fdc870ae280795c95ce2521513b'; // Your Account SID from www.twilio.com/console
         //const authToken = '227ddf3ee99702591da12b4d71b4a62c';   // Your Auth Token from www.twilio.com/console
 
         const client = new twilio(ACCOUNTSID, AUTHTOKEN);
         console.log('hit');
         client.messages.create({
-            body: 'Hello from Node',
-            to: '+16235187521',  // Text this number
+            body: `${player_name},
+            My name is ${rec_name}, I am a recruter for ${school}, I saw your HighRecruiter profile and would be intrested in talking to you more and seeing you play sometime. Here is my contact info, hope to hear from you soon. ${rec_email}, ${phone_number}`,
+            to: `+1${player_phone}`,  // Text this number
             from: '+13343676024' // From a valid Twilio number
         })
             .then((message) => console.log(message.sid))
