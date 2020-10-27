@@ -18,7 +18,7 @@ module.exports = {
         const {player_id,recruiter_id} = req.body;
         const db = req.app.get('db');
         console.log('hit add view');
-        console.log(req.body);
+        //console.log(req.body);
 
         db.add_profile_view({player_id,recruiter_id})
         .then(()=>{
