@@ -15,7 +15,8 @@ class PlayerView extends Component {
             kills: null,
             opponent: '',
             games: [],
-            playerStats: []
+            playerStats: [],
+            numProfileViews: 0
         }
     }
 
@@ -68,24 +69,34 @@ class PlayerView extends Component {
             .catch(err => console.log(err))
     }
 
+    profileViews = () =>{
+        const {player_id} = this.props.playerReducer.player;
+        Axios.get(`/api/numprofileviews/${player_id}`)
+        .then(res =>{
+            console.log(res.data);
+            this.setState({numProfileViews: res.data[0].count});
+        })
+    }
+
     componentDidMount() {
-        console.log(this.props.playerReducer);
+        console.log(this.state.numProfileViews);
         // if(!this.props.playerReducer.player.name){
         //     this.props.history.push('/');
         // }
         this.getGames();
         this.getStats();
+        this.profileViews();
         //console.log(this.props.playerReducer)
     }
-    // componentDidUpdate(prevProps){
-    //     if(prevProps.playerReducer !== this.props.playerReducer){
-    //         this.props.history.push('/')
+    // componentDidUpdate(prevProps, prevState){
+    //     if(prevState.numProfileViews !== this.state.numProfileViews){
+    //         this.profileViews();
     //     }
     // }
 
     render() {
         //console.log(this.state.games);
-        //console.log(this.state.playerStats);
+       // console.log(this.state.numProfileViews);
         const mappedGames = this.state.games.map((el, ind) => {
             return <div key={ind} className='single-game'>
                 <p>Opponent:{el.opponent}</p>
@@ -110,7 +121,7 @@ class PlayerView extends Component {
                         <p>Email: {this.props.playerReducer.player.email}</p>
                         <p>Phone: {this.props.playerReducer.player.phone_number}</p>
                     </div>
-                    <p className='num-views'>Your profile has __ recruiter views</p>
+                    <p className='num-views'>Your profile has {this.state.numProfileViews} recruiter views</p>
                     {this.state.addGameToggle === 0 ? <button className='toggle-button' onClick={this.addGameDisplay}> Add Game </button> :
                         <div className='add-game-container'>
                             <input type="number" placeholder='Aces' name='aces' onChange={this.handleInput} />

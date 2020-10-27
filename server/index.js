@@ -42,7 +42,7 @@ app.get('/api/getplayersgames',gameCtrl.getSinglePlayerGame);
 app.get('/api/playerstats',gameCtrl.getAvgStats);
 app.get(`/api/displayplayers`,recCtrl.displayPlayers);
 app.get(`/api/single/:playerId`,recCtrl.singlePlayer);
-app.get(`/api/numprofileviews`,gameCtrl.getProfileViews);
+app.get(`/api/numprofileviews/:player_id`,gameCtrl.getProfileViews);
 
 //endpoint for contact and recruiter stuff
 app.post(`/api/email`,emailCtrl.email);

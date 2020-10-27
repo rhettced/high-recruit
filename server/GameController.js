@@ -27,6 +27,13 @@ module.exports = {
         .catch(err => res.status(500).send(err))
     },
     getProfileViews: (req,res) =>{
-        
+        const {player_id} = req.params;
+        const db = req.app.get('db');
+
+        db.get_num_profile_views({player_id})
+        .then(profileViews =>{
+            res.status(200).send(profileViews);
+        })
+        .catch(err => console.log(err))
     }
 }
