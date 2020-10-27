@@ -36,7 +36,7 @@ class SinglePlayer extends Component{
         this.props.history.push('/recruitview')
     }
 
-    textContact = () =>{
+    textContact = () => {
         const player_name = this.state.player.name;
         const rec_name = this.props.recruiterReducer.recruiter.name
         const phone_number = this.props.recruiterReducer.recruiter.phone_number;
@@ -52,12 +52,21 @@ class SinglePlayer extends Component{
         this.props.history.push('/recruitview')
     }
 
+    addProfileView = () =>{
+        const {recruiter_id} = this.props.recruiterReducer.recruiter;
+        const {player_id} = this.props.match.params;
+        Axios.post(`/api/addprofileview`,{player_id,recruiter_id})
+        .then()
+        .catch(err => console.log(err))
+    }
+
     componentDidMount(){
         // if(!this.props.recruiterReducer.recruiter.name){
         //     this.props.history.push('/');
         // } else{
         // }
         this.getPlayer();
+        this.addProfileView();
     }
 
     render(){

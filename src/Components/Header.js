@@ -28,6 +28,7 @@ class Header extends Component {
                     <div className='header-leftside'>
                         <h2 className='header-logo'>HR</h2>
                         <h1>HighRecruits</h1>
+                        
                     </div>
                     {this.props.playerReducer.player.name? <div className='auth-buttons'>
                         <Link to={`/editaccount/${this.props.playerReducer.player.player_id}`}><button>Edit Account</button></Link>

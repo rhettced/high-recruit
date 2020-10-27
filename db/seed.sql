@@ -55,3 +55,9 @@ game.player_id,
 player.profile_pic
 from game join player on player.player_id = game.player_id
 group by game.player_id, player.profile_pic;
+
+create table recruiter_views(
+recruiter_view_id serial primary key,
+player_id integer references player(player_id),
+recruiter_id integer references recruiter(recruiter_id)
+);

@@ -110,6 +110,7 @@ class PlayerView extends Component {
                         <p>Email: {this.props.playerReducer.player.email}</p>
                         <p>Phone: {this.props.playerReducer.player.phone_number}</p>
                     </div>
+                    <p className='num-views'>Your profile has __ recruiter views</p>
                     {this.state.addGameToggle === 0 ? <button className='toggle-button' onClick={this.addGameDisplay}> Add Game </button> :
                         <div className='add-game-container'>
                             <input type="number" placeholder='Aces' name='aces' onChange={this.handleInput} />

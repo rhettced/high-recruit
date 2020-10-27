@@ -25,5 +25,8 @@ module.exports = {
         db.get_avg_stats({player_id})
         .then(stats => res.status(200).send(stats))
         .catch(err => res.status(500).send(err))
+    },
+    getProfileViews: (req,res) =>{
+        
     }
 }

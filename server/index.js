@@ -36,17 +36,19 @@ app.post(`/api/logout`,authCtrl.logout);
 app.get('/api/session',authCtrl.getSession);
 app.delete('/api/deleteaccount/:player_id/:recruiter_id',authCtrl.deleteAccount);
 app.put(`/api/editinfo/:player_id`,authCtrl.editPlayer);
-// endpoints for games
+// endpoints for games/profiles
 app.post('/api/addgame',gameCtrl.addGame);
 app.get('/api/getplayersgames',gameCtrl.getSinglePlayerGame);
 app.get('/api/playerstats',gameCtrl.getAvgStats);
 app.get(`/api/displayplayers`,recCtrl.displayPlayers);
 app.get(`/api/single/:playerId`,recCtrl.singlePlayer);
-//endpoint for email nodemailer
+app.get(`/api/numprofileviews`,gameCtrl.getProfileViews);
+
+//endpoint for contact and recruiter stuff
 app.post(`/api/email`,emailCtrl.email);
 app.post(`/api/text`,emailCtrl.text);
+app.post(`/api/addprofileview`,recCtrl.addView);
 //endpoint for hosting
-
 app.get('*',(req,res) =>{
     res.sendFile(path.join(__dirname,'../build/index.html'));
 })

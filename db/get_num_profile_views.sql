@@ -1,0 +1,1 @@
+select count(player_id), player_id from recruiter_views where player_id = ${player_id} group by player_id;
