@@ -6,6 +6,7 @@ import Auth from './Components/Auth';
 // import PlayerView from './Components/PlayerView';
 // import RecruiterView from './Components/RecruiterView';
 // import SinglePLayer from './Components/SinglePlayer';
+// import PlayerChart from './Components/PlayerChart'
 import routes from './routes';
 import Axios from 'axios';
 import {connect} from 'react-redux'

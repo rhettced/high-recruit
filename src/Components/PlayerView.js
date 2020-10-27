@@ -2,6 +2,7 @@ import Axios from 'axios';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './PlayerView.scss';
+import {Link} from 'react-router-dom';
 
 class PlayerView extends Component {
     constructor() {
@@ -122,6 +123,7 @@ class PlayerView extends Component {
                         <p>Phone: {this.props.playerReducer.player.phone_number}</p>
                     </div>
                     <p className='num-views'>Your profile has {this.state.numProfileViews} recruiter views</p>
+                    <Link to={`/statchart/${this.props.playerReducer.player.player_id}`}>View your stats vs average stats</Link>
                     {this.state.addGameToggle === 0 ? <button className='toggle-button' onClick={this.addGameDisplay}> Add Game </button> :
                         <div className='add-game-container'>
                             <input type="number" placeholder='Aces' name='aces' onChange={this.handleInput} />
