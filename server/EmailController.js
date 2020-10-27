@@ -1,7 +1,7 @@
 const nodemailer = require('nodemailer');
 const twilio = require('twilio');
 
-const { EMAIL, PASSWORD } = process.env;
+const { EMAIL, PASSWORD, AUTHTOKEN, ACCOUNTSID } = process.env;
 
 module.exports = {
     email: async (req, res) => {
@@ -75,10 +75,10 @@ module.exports = {
         }
     },
     text: (req, res) => {
-        const accountSid = 'AC3b5c5fdc870ae280795c95ce2521513b'; // Your Account SID from www.twilio.com/console
-        const authToken = '21d51c7a0229fc54f6446778c2cc47e6';   // Your Auth Token from www.twilio.com/console
+        //const accountSid = 'AC3b5c5fdc870ae280795c95ce2521513b'; // Your Account SID from www.twilio.com/console
+        //const authToken = '227ddf3ee99702591da12b4d71b4a62c';   // Your Auth Token from www.twilio.com/console
 
-        const client = new twilio(accountSid, authToken);
+        const client = new twilio(ACCOUNTSID, AUTHTOKEN);
         console.log('hit');
         client.messages.create({
             body: 'Hello from Node',
