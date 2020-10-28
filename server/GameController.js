@@ -35,5 +35,14 @@ module.exports = {
             res.status(200).send(profileViews);
         })
         .catch(err => console.log(err))
+    },
+    getTotalStats: (req,res) => {
+        const db=req.app.get('db');
+        
+        db.get_total_avg_stats()
+        .then(allStats=>{
+            res.status(200).send(allStats);
+        })
+        .catch(err => console.log(err))
     }
 }

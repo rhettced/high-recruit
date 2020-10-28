@@ -9,26 +9,38 @@ export default class LineGraph extends Component {
     constructor(){
         super();
         this.state = {
-            playerStats: []
+            playerStats: [],
+            allStats: []
         }
     }
 
-    getStats = () => {
+    getPlayerStats = () => {
         Axios.get(`/api/playerstats`)
             .then(res => {
                 this.setState({ playerStats: res.data[0]})
             })
             .catch(err => console.log(err))
     }
-    chartRef = React.createRef();
+
+    getAllStats = () => {
+        Axios.get('/api/totalplayerstats')
+        .then(res => {
+            this.setState({ allStats: res.data[0]})
+        })
+        .catch(err => console.log(err))
+    }
+
     componentDidMount(){
-        this.getStats();
+        this.getPlayerStats();
+        this.getAllStats();
     }
     
+    chartRef = React.createRef();
     componentDidUpdate(prevProps,prevState) {
         if(prevState!==this.state){
             const myChartRef = this.chartRef.current.getContext("2d");
             const {avg_aces,avg_blocks,avg_digs,avg_kills,avg_hit_attempts} = this.state.playerStats;
+            const {avg_acest,avg_blockst,avg_digst,avg_killst,avg_hit_attemptst} = this.state.allStats;
             new Chart(myChartRef, {
                 type: "line",
                 data: {
@@ -41,7 +53,7 @@ export default class LineGraph extends Component {
                         },
                         {
                             label: 'Total Average',
-                            data: [1,2,3,2,3],
+                            data: [avg_acest,avg_blockst,avg_digst,avg_killst,avg_hit_attemptst],
                         }
                     ]
                 },
@@ -52,7 +64,7 @@ export default class LineGraph extends Component {
         }
     }
     render() {
-        console.log(this.state.playerStats)
+        console.log(this.state.allStats);
         return (
             <div >
                 <canvas
