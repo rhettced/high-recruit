@@ -1,11 +1,24 @@
+
+
 const initialState = {
     player: {
         name: ''
-    }
+    },
+    // stats:{
+    //     avg_aces: ''
+    // }
 }
 
 const GET_USER = 'GET_USER',
-      CLEAR_USER = 'CLEAR_USER';
+      CLEAR_USER = 'CLEAR_USER',
+      GET_STATS = 'GET_STATS';
+
+export function getStatsRedux(statsObj){
+    return{
+        type: GET_STATS,
+        payload: statsObj
+    }
+}
 
 export function getUser(playerObj){
     return {
@@ -29,7 +42,9 @@ export default function reducer(state = initialState,action){
         case GET_USER:
             return {...state, player: payload};
         case CLEAR_USER:
-            return {...state, player: payload};
+            return {...state, player: payload, stats: payload};
+        case GET_STATS:
+            return{...state, stats: payload}
         default:
             return state;
     }

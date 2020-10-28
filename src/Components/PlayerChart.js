@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Axios from 'axios';
 import Chart from "chart.js";
-import BulkExports from 'twilio/lib/rest/preview/BulkExports';
+//import BulkExports from 'twilio/lib/rest/preview/BulkExports';
 //import classes from "./LineGraph.module.css";
 import './PlayerChart.scss';
 import {connect} from 'react-redux';

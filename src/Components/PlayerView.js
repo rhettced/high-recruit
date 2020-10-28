@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './PlayerView.scss';
 import {Link} from 'react-router-dom';
+import {getStatsRedux} from '../Redux/player_reducer';
 
 class PlayerView extends Component {
     constructor() {
@@ -66,6 +67,7 @@ class PlayerView extends Component {
         Axios.get(`/api/playerstats`)
             .then(res => {
                 this.setState({ playerStats: res.data[0] })
+                this.props.getStatsRedux(res.data[0]);
             })
             .catch(err => console.log(err))
     }
@@ -74,28 +76,29 @@ class PlayerView extends Component {
         const {player_id} = this.props.playerReducer.player;
         Axios.get(`/api/numprofileviews/${player_id}`)
         .then(res =>{
-            console.log(res.data);
+            //console.log(res.data);
             this.setState({numProfileViews: res.data[0].count});
         })
     }
 
     componentDidMount() {
-        console.log(this.state.numProfileViews);
+        //console.log(this.state.numProfileViews);
         // if(!this.props.playerReducer.player.name){
-        //     this.props.history.push('/');
-        // }
-        this.getGames();
-        this.getStats();
-        this.profileViews();
-        //console.log(this.props.playerReducer)
-    }
-    // componentDidUpdate(prevProps, prevState){
-    //     if(prevState.numProfileViews !== this.state.numProfileViews){
-    //         this.profileViews();
-    //     }
-    // }
-
-    render() {
+            //     this.props.history.push('/');
+            // }
+            this.getGames();
+            this.getStats();
+            this.profileViews();
+            //console.log(this.props.playerReducer)
+        }
+        // componentDidUpdate(prevProps, prevState){
+            //     if(prevState.numProfileViews !== this.state.numProfileViews){
+                //         this.profileViews();
+                //     }
+                // }
+                
+        render() {
+        console.log(this.state.playerStats);
         //console.log(this.state.games);
        // console.log(this.state.numProfileViews);
         const mappedGames = this.state.games.map((el, ind) => {
@@ -159,4 +162,4 @@ class PlayerView extends Component {
 
 const mapMyStateToProps = reduxState => reduxState;
 
-export default connect(mapMyStateToProps)(PlayerView);
+export default connect(mapMyStateToProps,{getStatsRedux})(PlayerView);
