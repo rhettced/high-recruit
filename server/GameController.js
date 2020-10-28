@@ -17,12 +17,12 @@ module.exports = {
         .then(games => res.status(200).send(games))
         .catch(err => res.status(500).send(err))
     },
-    getAvgStats: (req,res) => {
+    getAvgStats: async(req,res) => {
         const {player_id} = req.session.user;
         db = req.app.get('db');
     
 
-        db.get_avg_stats({player_id})
+        await db.get_avg_stats({player_id})
         .then(stats => res.status(200).send(stats))
         .catch(err => res.status(500).send(err))
     },
