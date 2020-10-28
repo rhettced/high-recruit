@@ -1,5 +1,15 @@
-canvas{
+@import '../App.scss';
+
+.player-chart{
     //background-color: blue;
-    height: 100px;
+    height: 100vw;
+    background-color: $primary_3;
     box-sizing: border-box;
+    @include flex-container;
+    align-items: flex-start;
+}
+
+canvas{
+    margin-top: 100px;
+    height: 400px;
 }
