@@ -15,6 +15,5 @@ export default(
         <Route component={RecruiterView} exact path='/recruitview'/>
         <Route component={EditPlayer} path='/editaccount/:player_id'/>
         <Route component={PlayerChart} path='/statchart/:player_id'/>
-        
     </Switch>
 );
