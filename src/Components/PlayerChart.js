@@ -10,18 +10,18 @@ class LineGraph extends Component {
     constructor() {
         super();
         this.state = {
-            playerStats: [],
+            // playerStats: [],
             allStats: []
         }
     }
-
-    getPlayerStats = () => {
-        Axios.get(`/api/playerstats`)
-            .then(res => {
-                this.setState({ playerStats: res.data[0] })
-            })
-            .catch(err => console.log(err))
-    }
+    //Don't need this anymore I put players stat on redux with them
+    // getPlayerStats = () => {
+    //     Axios.get(`/api/playerstats`)
+    //         .then(res => {
+    //             this.setState({ playerStats: res.data[0] })
+    //         })
+    //         .catch(err => console.log(err))
+    // }
 
     getAllStats = () => {
         Axios.get('/api/totalplayerstats')
@@ -32,20 +32,16 @@ class LineGraph extends Component {
     }
 
     componentDidMount() {
-        this.getPlayerStats();
+        // this.getPlayerStats();
         this.getAllStats();
-    }
-
-    roundDecimal = (num) => {
-        Math.round((num*100)/100);
     }
 
     chartRef = React.createRef();
     componentDidUpdate(prevProps, prevState) {
         if (prevState !== this.state) {
-            Chart.defaults.global.defaultFontSize = 30;
+            //Chart.defaults.global.defaultFontSize = 20;
             const myChartRef = this.chartRef.current.getContext("2d");
-            const { avg_aces, avg_blocks, avg_digs, avg_kills, avg_hit_attempts } = this.state.playerStats;
+            const { avg_aces, avg_blocks, avg_digs, avg_kills, avg_hit_attempts } = this.props.playerReducer.stats;
             const { avg_acest, avg_blockst, avg_digst, avg_killst, avg_hit_attemptst } = this.state.allStats;
             new Chart(myChartRef, {
                 type: "line",
@@ -67,7 +63,7 @@ class LineGraph extends Component {
                 options: {
                     legend: {
                         labels:{
-                            fontSize: 20
+                            fontSize: 15
                         }
                     },
                     elements:{

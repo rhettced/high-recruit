@@ -98,7 +98,7 @@ class PlayerView extends Component {
                 // }
                 
         render() {
-        console.log(this.state.playerStats);
+        //console.log(this.state.playerStats);
         //console.log(this.state.games);
        // console.log(this.state.numProfileViews);
         const mappedGames = this.state.games.map((el, ind) => {
@@ -127,7 +127,8 @@ class PlayerView extends Component {
                     </div>
                     <p className='num-views'>Your profile has {this.state.numProfileViews} recruiter views</p>
                     <Link to={`/statchart/${this.props.playerReducer.player.player_id}`}>View your stats vs average stats</Link>
-                    {this.state.addGameToggle === 0 ? <button className='toggle-button' onClick={this.addGameDisplay}> Add Game </button> :
+                    {this.state.addGameToggle === 0 ? <div><button className='toggle-button' onClick={this.addGameDisplay}> Add Game </button>
+                                                      <Link to='/livestats'><button>Take Live Stats</button></Link></div> :
                         <div className='add-game-container'>
                             <input type="number" placeholder='Aces' name='aces' onChange={this.handleInput} />
                             <input type="number" placeholder='Digs' name='digs' onChange={this.handleInput} />
