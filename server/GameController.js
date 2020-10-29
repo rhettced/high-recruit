@@ -66,5 +66,14 @@ module.exports = {
             res.sendStatus(200)
         })
         .catch(err => console.log(err))
+    },
+    deleteCurrentGameStats: (req,res) =>{
+        const db = req.app.get('db');
+
+        db.delete_current_game_stats()
+        .then(()=>{
+            res.sendStatus(200)
+        })
+        .catch(err => console.log(err))
     }
 }

@@ -75,12 +75,18 @@ class LiveStats extends Component{
         const {opponent} = this.state;
         for(let i =0; i<this.state.currentGameStats.length; i++){
             console.log(this.state.currentGameStats[i]);
-            Axios.post('/api/turnstatstogame',{...this.state.currentGameStats[i],opponent})
-            .then(() =>{
-                
-            })
-            .catch(err => console.log(err))
+            const{aces,digs,blocks,hit_attempts,kills} = this.state.currentGameStats[i];
+            if(aces === 0 && digs ===0 && blocks === 0 && hit_attempts === 0 && kills ===0){
+                return;
+            } else{
+                Axios.post('/api/turnstatstogame',{...this.state.currentGameStats[i],opponent})
+                .then(() =>{
+    
+                })
+                .catch(err => console.log(err))
+            }
         }
+        Axios.delete('/api/deletegamestats');
         alert('good game stats cleared')
     }
     
