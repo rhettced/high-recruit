@@ -44,5 +44,27 @@ module.exports = {
             res.status(200).send(allStats);
         })
         .catch(err => console.log(err))
+    },
+    addSinglePlay: (req,res) =>{
+        const {ace,dig,block,hitAttempt,kill,player_id} = req.body;
+        const db = req.app.get('db');
+        console.log(req.body)
+        db.add_single_play({ace,dig,block,hitAttempt,kill,player_id})
+        .then((gameStats)=>{
+            res.status(200).send(gameStats);
+        })
+        .catch(err => console.log(err))
+    },
+    turnStatsToGame: (req,res) =>{
+        const {aces,digs,blocks,kills,opponent} = req.body;
+        const playerId = req.body.player_id;
+        const hitAttempts = req.body.hit_attempts;
+        const db = req.app.get('db');
+        console.log(req.body);
+        db.add_game({aces,digs,blocks,kills,opponent,playerId,hitAttempts})
+        .then(()=>{
+            res.sendStatus(200)
+        })
+        .catch(err => console.log(err))
     }
 }

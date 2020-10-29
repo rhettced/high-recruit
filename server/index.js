@@ -44,6 +44,8 @@ app.get(`/api/displayplayers`,recCtrl.displayPlayers);
 app.get(`/api/single/:playerId`,recCtrl.singlePlayer);
 app.get(`/api/numprofileviews/:player_id`,gameCtrl.getProfileViews);
 app.get('/api/totalplayerstats',gameCtrl.getTotalStats);
+app.post('/api/addsingleplay',gameCtrl.addSinglePlay);
+app.post('/api/turnstatstogame',gameCtrl.turnStatsToGame);
 
 //endpoint for contact and recruiter stuff
 app.post(`/api/email`,emailCtrl.email);

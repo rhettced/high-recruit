@@ -1,0 +1,44 @@
+@import '../App.scss';
+
+.stat-checker{
+    display: flex;
+    justify-content: center;
+}
+.stat-checker h3{
+    margin: 15px 5px;
+}
+
+// .stat-checker{
+//     font-size: 15px;
+//     transition: font-size 4s ease-out;
+// }
+// .stat-checker h3:active { 
+//     color: rgb(140, 160, 140);
+//     font-size: 30px;
+//  }
+// //h3 div:hover {color: $primary_2}
+// h3 div::selection {color: $primary_2}
+
+.on-court-list{
+    background-color: $primary_2;
+}
+.on-court-list-selected{
+    background-color: $primary_3;
+}
+
+.action{
+    background-color: $primary_3;
+}
+.action-selected{
+    background-color: $primary_2;
+}
+
+.box-stats{
+    display: flex;
+    justify-content: center;
+    text-align: left;
+}
+.box-stats div{
+    text-align: left;
+    margin-left: 10px;
+}

@@ -61,3 +61,13 @@ recruiter_view_id serial primary key,
 player_id integer references player(player_id),
 recruiter_id integer references recruiter(recruiter_id)
 );
+
+create table single_play(
+single_play serial primary key,
+ace integer,
+dig integer,
+block integer,
+hit_attempt integer,
+kill integer,
+player_id integer references player(player_id)
+);
