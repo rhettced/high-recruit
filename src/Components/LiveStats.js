@@ -136,11 +136,17 @@ class LiveStats extends Component{
         //console.log('index 2', this.state.playerIndex2);
         return(
             <div>
-                <h2>Bench</h2>
-                {benchPlayers}
+                <div className='bench-court'>
+                    <div>
+                        <h2>Bench</h2>
+                        {benchPlayers}
+                    </div>
                 <button onClick={this.subPlayer}>Sub</button>
-                <h2>Court</h2>
-                {courtPlayers}
+                <div>
+                    <h2>Court</h2>
+                    {courtPlayers}
+                </div>
+                </div>
                 <div className='stat-checker'>
                     <h3 name='ace' onClick={()=>this.increaseStat('ace')} className={this.state.ace===0? 'action':'action-selected'}>Ace</h3>
                     <h3 name='dig' onClick={()=>this.increaseStat('dig')} className={this.state.dig===0? 'action':'action-selected'}>Dig</h3>
@@ -148,7 +154,7 @@ class LiveStats extends Component{
                     <h3 name='hitAttempt' onClick={()=>this.increaseStat('hitAttempt')} className={this.state.hitAttempt===0? 'action':'action-selected'}>Hit-Attempt</h3>
                     <h3 name='kill' onClick={()=>this.increaseStat('kill')} className={this.state.kill===0? 'action':'action-selected'}>Kill</h3>
                 </div>
-                <button onClick={this.sendPlay}>Add Stat</button>
+                <button className='add-stat' onClick={this.sendPlay}>Add Stat</button>
                 {/* <p>Player  Aces  Digs Blocks Hit Attempts Kills</p> */}
                 <div className='table-div'>
                     <table>
