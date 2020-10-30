@@ -89,6 +89,7 @@ class LiveStats extends Component{
         }
         Axios.delete('/api/deletegamestats');
         alert('good game stats cleared')
+        this.props.history.push('/profile');
     }
     
     componentDidMount(){
@@ -137,7 +138,7 @@ class LiveStats extends Component{
         //console.log(this.state.playerIndex);
         //console.log('index 2', this.state.playerIndex2);
         return(
-            <div>
+            <div className='live-stats-app'>
                 <div className='bench-court'>
                     <div>
                         <h2>Bench</h2>

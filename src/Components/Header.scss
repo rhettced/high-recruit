@@ -41,6 +41,9 @@ $width: 100vw;
 .header-leftside{
     @include flex-container;
 }
+.ea-button{
+    display: none;
+}
 
 @media (min-width: $change_px){
     .HR-header{
@@ -49,5 +52,8 @@ $width: 100vw;
     }
     .auth-buttons{
         flex-direction: row;
+    }
+    .ea-button{
+        display: inherit;
     }
 }

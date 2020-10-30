@@ -31,7 +31,7 @@ class Header extends Component {
                         
                     </div>
                     {this.props.playerReducer.player.name? <div className='auth-buttons'>
-                        <Link to={`/editaccount/${this.props.playerReducer.player.player_id}`}><button>Edit Account</button></Link>
+                        <Link to={`/editaccount/${this.props.playerReducer.player.player_id}`}><button className='ea-button'>Edit Account</button></Link>
                         <button onClick={this.logoutUser}> Logout </button>
                     </div> : <button onClick={this.logoutUser}> Logout </button>}
 

@@ -1,5 +1,8 @@
 @import '../App.scss';
 
+.live-stats-app{
+    height: 950px;
+}
 .stat-checker{
     display: flex;
     justify-content: center;
@@ -7,17 +10,6 @@
 .stat-checker h3{
     margin: 15px 5px;
 }
-
-// .stat-checker{
-//     font-size: 15px;
-//     transition: font-size 4s ease-out;
-// }
-// .stat-checker h3:active { 
-//     color: rgb(140, 160, 140);
-//     font-size: 30px;
-//  }
-// //h3 div:hover {color: $primary_2}
-// h3 div::selection {color: $primary_2}
 
 .on-court-list{
     background-color: $primary_2;
@@ -59,26 +51,31 @@ table{
     justify-content: center;
     border-collapse: collapse;
     border-spacing: 0.5rem;
+    border-bottom: black solid 2px;
 }
 
 tr{
-    width: 700px;
+    width: 360px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     text-align: left;
-    border: black 2px solid;
+    border-top: black 2px solid;
+    border-left: black 2px solid;
+    border-right:  black 2px solid;
 }
 
 tc{
-    padding-left: 20px;
-    //border: solid black 2px;
-    width: 90px;
+   // padding-left: 20px;
+   // border: solid black 2px;
+    width: 50px;
+    padding-left: 5px;
 }
 
 .kills{
     text-align: right;
+    padding-right: 5px;
 }
 .attempts{
     text-align: center;
@@ -101,4 +98,12 @@ tc{
 
 .add-full-game{
     margin-left: 10px;
+}
+
+@media (min-width: $change_px){
+    tr{
+        width: 700px;
+    }
+    
+
 }
