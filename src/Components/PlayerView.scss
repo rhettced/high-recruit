@@ -48,6 +48,7 @@
 
 .toggle-button{
     margin-top: 10px;
+    margin-right: 5px;
 }
 
 .top-line{
@@ -70,6 +71,14 @@
 
 .stat-title{
     font-weight: bold;
+}
+
+
+button{
+    @include button-cont;
+}
+button:hover{
+    @include button-cont-hover;
 }
 
 @media (min-width: $change_px){

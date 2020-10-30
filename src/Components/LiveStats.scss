@@ -33,6 +33,13 @@
     background-color: $primary_2;
 }
 
+.bench-list{
+    background-color: $primary_2;
+}
+.bench-list-selected{
+    background-color: $primary_3;
+}
+
 .box-stats{
     display: flex;
     justify-content: center;
@@ -45,6 +52,7 @@
 .table-div{
     display: flex;
     justify-content: center;
+    margin-bottom: 15px;
 }
 table{
     display: block;
@@ -89,4 +97,8 @@ tc{
 
 .add-stat{
     margin-bottom: 15px;
+}
+
+.add-full-game{
+    margin-left: 10px;
 }

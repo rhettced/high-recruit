@@ -9,6 +9,7 @@ class LiveStats extends Component{
         super();
         this.state = {
             player_id: '',
+            player_id2: '',
             playerIndex: null,
             player_index2:null,
             players: [],
@@ -37,7 +38,7 @@ class LiveStats extends Component{
     }
 
     getPlayersIdBench= (id,index) =>{
-        this.setState({player_id: id, playerIndex: index})
+        this.setState({player_id2: id, playerIndex: index})
     }
     getPlayersIdCourt= (id,index) =>{
         this.setState({player_id: id, playerIndex2: index})
@@ -97,7 +98,8 @@ class LiveStats extends Component{
     render(){
         const benchPlayers=this.state.onBench.map((el,ind) =>{
             return <div key={ind} 
-                        onClick={()=>this.getPlayersIdBench(el.player_id,ind)}>{el.name}</div>
+                        onClick={()=>this.getPlayersIdBench(el.player_id,ind)}
+                        className={this.state.player_id2===el.player_id? 'bench-list':'bench-list-selected'}>{el.name}</div>
         });
 
         const courtPlayers=this.state.onCourt.map((el,ind) =>{
@@ -173,7 +175,7 @@ class LiveStats extends Component{
                 </div>
 
                 <input placeholder='Opponent' name='opponent' onChange={this.handleInput}/>
-                <button onClick={this.sendGame}>Add game to Players Stats</button>
+                <button className='add-full-game' onClick={this.sendGame}>Add game to Players Stats</button>
             </div>
             
         );
