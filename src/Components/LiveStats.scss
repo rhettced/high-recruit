@@ -42,3 +42,36 @@
     text-align: left;
     margin-left: 10px;
 }
+.table-div{
+    display: flex;
+    justify-content: center;
+}
+table{
+    display: block;
+    justify-content: center;
+    border-collapse: collapse;
+    border-spacing: 0.5rem;
+}
+
+tr{
+    width: 700px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+    border: black 2px solid;
+}
+
+tc{
+    padding-left: 20px;
+    //border: solid black 2px;
+    width: 90px;
+}
+
+.kills{
+    text-align: right;
+}
+.attempts{
+    text-align: center;
+}

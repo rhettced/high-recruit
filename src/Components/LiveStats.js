@@ -106,16 +106,29 @@ class LiveStats extends Component{
                         className={this.state.player_id===el.player_id?'on-court-list': 'on-court-list-selected'}>{el.name}</div>
         });
 
-        const gameStats=this.state.currentGameStats.map((el,ind)=>{
-            return <div key={ind} className='box-stats'>
-                <div>{el.name}</div>
-                <div>Aces: {el.aces}</div>
-                <div>Digs: {el.digs}</div>
-                <div>Blocks: {el.blocks}</div>
-                <div>Hit Attempts: {el.hit_attempts}</div>
-                <div>Kills: {el.kills}</div>
-            </div>
-        })
+        // const gameStats=this.state.currentGameStats.map((el,ind)=>{
+        //     return <div key={ind} className='box-stats'>
+        //         <div>{el.name}</div>
+        //         <div>Aces: {el.aces}</div>
+        //         <div>Digs: {el.digs}</div>
+        //         <div>Blocks: {el.blocks}</div>
+        //         <div>Hit Attempts: {el.hit_attempts}</div>
+        //         <div>Kills: {el.kills}</div>
+        //     </div>
+        // })
+
+        const gameStats= this.state.currentGameStats.map(((el,ind) =>{
+           return  <tr key={ind}>
+                    <tc>{el.name}</tc>
+                    <tc>{el.aces}</tc>
+                    <tc>{el.digs}</tc>
+                    <tc>{el.blocks}</tc>
+                    <tc className='attempts'>{el.hit_attempts}</tc>
+                    <tc className='kills'>{el.kills}</tc>
+               </tr>
+        }
+        ))
+      
         //console.log(this.state.onCourt);
 
         //console.log(this.state.player_id);
@@ -136,8 +149,23 @@ class LiveStats extends Component{
                     <h3 name='kill' onClick={()=>this.increaseStat('kill')} className={this.state.kill===0? 'action':'action-selected'}>Kill</h3>
                 </div>
                 <button onClick={this.sendPlay}>Add Stat</button>
-                <p>Player  Aces  Digs Blocks Hit Attempts Kills</p>
-                {gameStats}
+                {/* <p>Player  Aces  Digs Blocks Hit Attempts Kills</p> */}
+                <div className='table-div'>
+                    <table>
+                        <tbody>
+                            <tr>
+                                <th> Name </th>
+                                <th> Aces </th>
+                                <th> Digs</th>
+                                <th> Blocks </th>
+                                <th> Hit Attempts</th>
+                                <th> Kills</th>
+                            </tr>
+                            {gameStats}
+                        </tbody>
+                    </table>
+                </div>
+
                 <input placeholder='Opponent' name='opponent' onChange={this.handleInput}/>
                 <button onClick={this.sendGame}>Add game to Players Stats</button>
             </div>
