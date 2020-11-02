@@ -75,5 +75,15 @@ module.exports = {
             res.sendStatus(200)
         })
         .catch(err => console.log(err))
+    },
+    getTeamPlayers: (req,res) =>{
+        const db = req.app.get('db');
+        const {team_id} = req.params;
+        console.log(req.params)
+        db.get_team_players({team_id})
+        .then((team)=>{
+            res.status(200).send(team)
+        })
+        .catch(err => console.log(err))
     }
 }

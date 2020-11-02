@@ -76,8 +76,12 @@ class PlayerView extends Component {
         const {player_id} = this.props.playerReducer.player;
         Axios.get(`/api/numprofileviews/${player_id}`)
         .then(res =>{
-            //console.log(res.data);
-            this.setState({numProfileViews: res.data[0].count});
+            console.log(res.data);
+            if(!res.data[0]){
+                this.setState({numProfileViews: 0})
+            } else {
+                this.setState({numProfileViews: res.data[0].count});
+            }
         })
     }
 

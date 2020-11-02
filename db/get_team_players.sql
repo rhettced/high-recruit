@@ -1,0 +1,1 @@
+select * from player where team_id = ${team_id};

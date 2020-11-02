@@ -8,6 +8,7 @@ sum(kills) as total_kills,
 sum(hit_attempts) as total_hit_attempts,
 game.player_id,
 player.profile_pic,
+player.team_id,
 player.name
 from game join player on player.player_id = game.player_id
-group by game.player_id, player.profile_pic, player.name;
+group by game.player_id, player.profile_pic, player.name, player.team_id;

@@ -27,7 +27,7 @@ class LiveStats extends Component{
 
     //highlight function on css to see what you are clicked on
     getAllPlayers = () =>{
-        Axios.get(`/api/displayplayers`)
+        Axios.get(`/api/teamplayers/${this.props.playerReducer.player.team_id}`)
         .then(res => {
             //console.log(res.data)
             this.setState({players: res.data});

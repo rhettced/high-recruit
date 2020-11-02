@@ -71,3 +71,5 @@ hit_attempt integer,
 kill integer,
 player_id integer references player(player_id)
 );
+
+alter table player add column team_id integer;
