@@ -53,13 +53,17 @@ class LiveStats extends Component{
     }
 
     subPlayer = () =>{
-        const playerToSub = this.state.onCourt.splice(this.state.playerIndex2,1,this.state.onBench[this.state.playerIndex]);
-        //console.log(playerToSub);
-        this.state.onBench.splice(this.state.playerIndex,1,playerToSub[0]);
-        //this.state.onBench.push(playerToSub[0])
-        //console.log(this.state.onBench)
-        this.setState({onCourt: this.state.onCourt, onBench: this.state.onBench});
-        //console.log(this.state.onBench)
+        if(this.state.player_id === '' || this.state.player_id2 === ''){
+            return
+        } else{
+            const playerToSub = this.state.onCourt.splice(this.state.playerIndex2,1,this.state.onBench[this.state.playerIndex]);
+            //console.log(playerToSub);
+            this.state.onBench.splice(this.state.playerIndex,1,playerToSub[0]);
+            //this.state.onBench.push(playerToSub[0])
+            //console.log(this.state.onBench)
+            this.setState({onCourt: this.state.onCourt, onBench: this.state.onBench});
+            //console.log(this.state.onBench)
+        }
     }
 
     sendPlay = () =>{
