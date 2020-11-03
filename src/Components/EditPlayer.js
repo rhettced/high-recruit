@@ -12,7 +12,7 @@ class EditPlayer extends Component {
         super();
         this.state = {
             playerInfo: [],
-            name: '',
+            name: 'Taco',
             email: '',
             school: '',
             classYear: '',
@@ -37,8 +37,9 @@ class EditPlayer extends Component {
     }
 
     componentDidMount() {
+        const {name,email,position,school,class_year,phone_number,profile_pic} = this.props.playerReducer.player;
         this.getPlayer();
-        this.setState({ name: this.state.playerInfo.name })
+        this.setState({ name, email, position,school,classYear: class_year,position,phoneNumber: phone_number,picUrl: profile_pic })
     }
 
     cancelButton = () => {
@@ -86,12 +87,12 @@ class EditPlayer extends Component {
                 <div className='register-inputs'>
                     <p className='recruit-warning'>Fill Out All Fields</p>
                     <input placeholder='Name *' name='name' onChange={this.handleInput} value={this.state.name} />
-                    <input placeholder='Email *' name='email' onChange={this.handleInput} />
-                    <input placeholder='School *' name='school' onChange={this.handleInput} />
-                    <input placeholder='Class Year' name='classYear' onChange={this.handleInput} />
-                    <input placeholder='Position' name='position' onChange={this.handleInput} />
-                    <input placeholder='Profile Pic Url' name='picUrl' onChange={this.handleInput} />
-                    <input placeholder='Phone Number *' type="tel" name='phoneNumber' onChange={this.handleInput} />
+                    <input placeholder='Email *' name='email' onChange={this.handleInput} value={this.state.email}/>
+                    <input placeholder='School *' name='school' onChange={this.handleInput} value={this.state.school}/>
+                    <input placeholder='Class Year' name='classYear' onChange={this.handleInput} value={this.state.classYear}/>
+                    <input placeholder='Position' name='position' onChange={this.handleInput} value={this.state.position}/>
+                    <input placeholder='Profile Pic Url' name='picUrl' onChange={this.handleInput} value={this.state.picUrl}/>
+                    <input placeholder='Phone Number *' type="tel" name='phoneNumber' onChange={this.handleInput} value={this.state.phoneNumber}/>
                     <div>
                         <button onClick={this.editPlayer}>Save Changes</button>
                         <button onClick={this.deleteButton}>Delete Account</button>
